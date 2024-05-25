@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package assignment.v1;
 
-option go_package = "github.com/happytree09/avante-microservice/assignment.v1";
+option go_package = "github.com/happytree09/avante-microservice/assignment/v1";
 
 // Define the Assignment service
 service AssignmentService {
