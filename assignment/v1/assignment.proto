@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+package assignment.v1;
+
+option go_package = "github.com/happytree09/avante-microservice/assignment.v1";
+
+// Define the Assignment service
+service AssignmentService {
+  // Create a new assignment
+  rpc CreateAssignment(CreateAssignmentRequest) returns (CreateAssignmentResponse);
+
+  // Get details of a specific assignment
+  rpc GetAssignment(GetAssignmentRequest) returns (GetAssignmentResponse);
+
+  // List all assignments
+  rpc ListAssignments(ListAssignmentsRequest) returns (ListAssignmentsResponse);
+
+  // Update an existing assignment
+  rpc UpdateAssignment(UpdateAssignmentRequest) returns (UpdateAssignmentResponse);
+
+  // Delete an assignment
+  rpc DeleteAssignment(DeleteAssignmentRequest) returns (DeleteAssignmentResponse);
+}
+
+// Define the Assignment message
+message Assignment {
+  int32 id = 1;
+  string title = 2;
+  string description = 3;
+  string due_date = 4;  // ISO 8601 date format
+}
+
+// Request message for creating an assignment
+message CreateAssignmentRequest {
+  string title = 1;
+  string description = 2;
+  string due_date = 3;  // ISO 8601 date format
+}
+
+// Response message for creating an assignment
+message CreateAssignmentResponse {
+  Assignment assignment = 1;
+}
+
+// Request message for getting an assignment
+message GetAssignmentRequest {
+  int32 id = 1;
+}
+
+// Response message for getting an assignment
+message GetAssignmentResponse {
+  Assignment assignment = 1;
+}
+
+// Request message for listing assignments
+message ListAssignmentsRequest {}
+
+// Response message for listing assignments
+message ListAssignmentsResponse {
+  repeated Assignment assignments = 1;
+}
+
+// Request message for updating an assignment
+message UpdateAssignmentRequest {
+  int32 id = 1;
+  string title = 2;
+  string description = 3;
+  string due_date = 4;  // ISO 8601 date format
+}
+
+// Response message for updating an assignment
+message UpdateAssignmentResponse {
+  Assignment assignment = 1;
+}
+
+// Request message for deleting an assignment
+message DeleteAssignmentRequest {
+  int32 id = 1;
+}
+
+// Response message for deleting an assignment
+message DeleteAssignmentResponse {
+  bool success = 1;
+}
